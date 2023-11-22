@@ -1,0 +1,47 @@
+import React, { useEffect, useState } from "react";
+import { getDocuments, getSnapshot, getSnapshots } from "../../lib/queries";
+import { Product as ProductType } from "../../types/Product";
+import { useParams } from "react-router-dom";
+import Container from "../../components/Container";
+import ProductList from "../../components/ProductList";
+import Gallery from "../../components/Gallery";
+
+const Product = () => {
+  const { productId } = useParams();
+  const [product, setProduct] = useState<ProductType | null>(null);
+  const [suggestedProducts, setSuggestedProducts] = useState<ProductType[]>([]);
+
+  useEffect(() => {
+    getSnapshot<ProductType | null>("products", productId, setProduct);
+  }, [productId]);
+
+  useEffect(() => {
+    if (product) {
+      getSnapshots<ProductType>("products", setSuggestedProducts, {
+        property: "category",
+        value: product.category,
+      });
+    }
+  }, [product]);
+
+  if (!productId || !product) {
+    return null;
+  }
+
+  return (
+    <div className="bg-white">
+      <Container>
+        <div className="px-4 py-10 sm:px-6 lg:px-8">
+          <div className="lg:grid lg:grid-cols-2 lg:items-start lg:gap-x-8">
+            <Gallery images={product.images} />
+            <div className="mt-10 px-4 sm:mt-16 sm:px-0 lg:mt-0">Info</div>
+          </div>
+          <hr className="my-10" />
+          <ProductList title="Related Items" items={suggestedProducts} />
+        </div>
+      </Container>
+    </div>
+  );
+};
+
+export default Product;
