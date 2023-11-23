@@ -1,16 +1,15 @@
-import React, { useEffect, useState } from "react";
-import { getDocuments, getSnapshot, getSnapshots } from "../../lib/queries";
-import { Product as ProductType } from "../../types/Product";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Container from "../../components/Container";
-import ProductList from "../../components/ProductList";
 import Gallery from "../../components/Gallery";
 import Info from "../../components/Info";
+import { getSnapshot } from "../../lib/queries";
+import { Product as ProductType } from "../../types/Product";
 
 const Product = () => {
   const { productId } = useParams();
   const [product, setProduct] = useState<ProductType | null>(null);
-  const [suggestedProducts, setSuggestedProducts] = useState<ProductType[]>([]);
+  // const [suggestedProducts, setSuggestedProducts] = useState<ProductType[]>([]);
 
   useEffect(() => {
     getSnapshot<ProductType | null>("products", productId, setProduct);
