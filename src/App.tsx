@@ -1,10 +1,11 @@
 import React from "react";
 import Navbar from "./components/Navbar";
 import { Route, Routes } from "react-router-dom";
-import Homepage from "./pages/homepage/Homepage";
-import Product from "./pages/product/Product";
+import HomePage from "./pages/homePage/HomePage";
+import ProductPage from "./pages/productPage/ProductPage";
 import Footer from "./components/Footer";
 import Container from "./components/Container";
+import CategoryPage from "./pages/categoryPage/CategoryPage";
 
 const App = () => {
   return (
@@ -12,8 +13,9 @@ const App = () => {
       <Navbar />
 
       <Routes>
-        <Route path="/" element={<Homepage />} />
-        <Route path="/products/:productId" element={<Product />} />
+        <Route path="/" element={<HomePage/>} />
+        <Route path="/product/:productId" element={<ProductPage />} />
+        <Route path="/category/:categoryId" element={<CategoryPage />} />
       </Routes>
 
       <Footer />

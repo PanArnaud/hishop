@@ -4,20 +4,20 @@ import Container from "../../components/Container";
 import Gallery from "../../components/Gallery";
 import Info from "../../components/Info";
 import { getSnapshot } from "../../lib/queries";
-import { Product as ProductType } from "../../types/Product";
+import { Product } from "../../types/Product";
 
-const Product = () => {
+const ProductPage = () => {
   const { productId } = useParams();
-  const [product, setProduct] = useState<ProductType | null>(null);
-  // const [suggestedProducts, setSuggestedProducts] = useState<ProductType[]>([]);
+  const [product, setProduct] = useState<Product | null>(null);
+  // const [suggestedProducts, setSuggestedProducts] = useState<Product[]>([]);
 
   useEffect(() => {
-    getSnapshot<ProductType | null>("products", productId, setProduct);
+    getSnapshot<Product | null>("products", productId, setProduct);
   }, [productId]);
 
   // useEffect(() => {
   //   if (product) {
-  //     getSnapshots<ProductType>("products", setSuggestedProducts, {
+  //     getSnapshots<Product>("products", setSuggestedProducts, {
   //       property: "category",
   //       value: product.category,
   //     });
@@ -38,7 +38,7 @@ const Product = () => {
               <Info data={product} />
             </div>
           </div>
-          <hr className="my-10" />
+          {/* <hr className="my-10" /> */}
           {/* <ProductList title="Related Items" items={suggestedProducts} /> */}
         </div>
       </Container>
@@ -46,4 +46,4 @@ const Product = () => {
   );
 };
 
-export default Product;
+export default ProductPage;

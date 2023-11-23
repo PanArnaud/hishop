@@ -1,11 +1,11 @@
 import {
-  CollectionReference,
   DocumentData,
   FieldPath,
   OrderByDirection,
   QuerySnapshot,
   collection,
   doc,
+  getDoc,
   getDocs,
   onSnapshot,
   orderBy,
@@ -15,7 +15,7 @@ import {
 import { db } from "../firebase";
 
 // Snapshots
-const getSnapshots = <T,>(
+const getSnapshots = <T>(
   collectionName: string,
   setter: React.Dispatch<React.SetStateAction<T[]>>,
   whereFilter?: {
@@ -43,11 +43,11 @@ const getSnapshots = <T,>(
   });
 };
 
-const getSnapshot = <T,>(
+const getSnapshot = <T>(
   collectionName: string,
   id: string | undefined,
   setter: React.Dispatch<React.SetStateAction<T>>
-) => {
+): void => {
   if (id !== undefined) {
     onSnapshot(doc(db, collectionName, id), (doc) => {
       setter({ id: doc.id, ...doc.data() } as T);
@@ -56,7 +56,7 @@ const getSnapshot = <T,>(
 };
 
 // Documents
-const getDocuments = async <T,>(
+const getDocuments = async <T>(
   collectionName: string,
   setter: React.Dispatch<React.SetStateAction<T[]>>,
   whereFilter?: {
@@ -64,7 +64,7 @@ const getDocuments = async <T,>(
     value: string | number | boolean | null | undefined;
   },
   orderByFilter?: { property: string; direction: OrderByDirection }
-) => {
+): Promise<void> => {
   let q = query(collection(db, collectionName));
   if (whereFilter) {
     q = query(q, where(whereFilter.property, "==", whereFilter.value));
@@ -83,4 +83,17 @@ const getDocuments = async <T,>(
   );
 };
 
-export { getSnapshots, getSnapshot, getDocuments };
+const getDocument = async <T>(
+  collectionName: string,
+  id: string | undefined,
+  setter: React.Dispatch<React.SetStateAction<T>>
+): Promise<void> => {
+  if (id !== undefined) {
+    const document = await getDoc(doc(db, collectionName, id));
+    if (document.data() !== undefined) {
+      setter({ id: document.id, ...document.data() } as T);
+    }
+  }
+};
+
+export { getDocument, getDocuments, getSnapshot, getSnapshots };
