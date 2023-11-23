@@ -1,15 +1,17 @@
-import { useState } from "react";
+import { MouseEventHandler, useState } from "react";
 import { Product } from "../types/Product";
 import Button from "./Button";
 import Currency from "./Currency";
 import OptionPicker from "./OptionPicker";
 import { ShoppingCart } from "lucide-react";
+import useCart from "../hooks/useCart";
 
 interface InfoProps {
   data: Product;
 }
 
 const Info = ({ data }: InfoProps) => {
+  const cart = useCart();
   const defaultValue: { [key: string]: string | number | null } = {};
   Object.keys(data.options).map((option) => {
     defaultValue[option] = Object.create(data.options)[option][0];
@@ -27,6 +29,11 @@ const Info = ({ data }: InfoProps) => {
     }));
   };
 
+  const addToCart: MouseEventHandler<HTMLButtonElement> = (event) => {
+    event.stopPropagation();
+    cart.addItem({...data, ...{ options: selection}});
+  };
+
   return (
     <div>
       <h1 className="text-3xl font-bold text-gray-900">{data.name}</h1>
@@ -42,7 +49,7 @@ const Info = ({ data }: InfoProps) => {
         selectionUpdateHandler={changeSelection}
       />
       <div className="mt-10 flex items-center gap-x-3">
-        <Button className="flex items-center gap-x-2">
+        <Button onClick={addToCart} className="flex items-center gap-x-2">
           Add to cart <ShoppingCart />
         </Button>
       </div>

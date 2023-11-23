@@ -1,12 +1,12 @@
-import { Expand, ShoppingCart } from "lucide-react";
-import { Product } from "../types/Product";
-import { Category } from "../types/Category";
-import { useNavigate } from "react-router-dom";
-import IconButton from "./IconButton";
-import Currency from "./Currency";
+import { Expand } from "lucide-react";
 import { MouseEventHandler } from "react";
-import PreviewModal from "./PreviewModal";
+import { useNavigate } from "react-router-dom";
+import useCart from "../hooks/useCart";
 import usePreviewModal from "../hooks/usePreviewModal";
+import { Category } from "../types/Category";
+import { Product } from "../types/Product";
+import Currency from "./Currency";
+import IconButton from "./IconButton";
 
 interface ProductCardProps {
   data: Product;
@@ -28,7 +28,7 @@ const ProductCard = ({ data, categories }: ProductCardProps) => {
   const onPreview: MouseEventHandler<HTMLButtonElement> = (event) => {
     event.stopPropagation();
     previewModal.onOpen(data);
-  }
+  };
 
   return (
     <div
@@ -41,10 +41,6 @@ const ProductCard = ({ data, categories }: ProductCardProps) => {
             <IconButton
               icon={<Expand size={20} className="text-gray-600" />}
               onClick={onPreview}
-            />
-            <IconButton
-              icon={<ShoppingCart size={20} className="text-gray-600" />}
-              onClick={() => {}}
             />
           </div>
         </div>

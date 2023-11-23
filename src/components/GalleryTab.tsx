@@ -10,7 +10,7 @@ const GalleryTab = ({ image }: GalleryTabProps) => {
       {({ selected }) => (
         <div>
           <span className="absolute h-full w-full aspect-square inset-0 overflow-hidden rounded-md">
-            <img src={image} className="object-cover object-center" />
+            <img src={image} className="object-cover aspect-square object-center" />
           </span>
           <span
             className={`absolute inset-0 rounded-md ring-2 ring-offset-2 ${
