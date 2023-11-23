@@ -18,7 +18,7 @@ const ProductCard = ({ data, categories }: ProductCardProps) => {
   })[0];
 
   const handleClick = () => {
-    navigate(`/products/${data?.id}`);
+    navigate(`/product/${data?.id}`);
   };
 
   return (

@@ -1,7 +1,7 @@
-import { type ClassValue, clsx } from "clsx";
+import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
-function cn(...inputs: ClassValue[]) {
+function cn(...inputs: ClassValue[]): string {
   return twMerge(clsx(inputs));
 }
 
@@ -12,4 +12,11 @@ function capitalizeFirstLetter(input: string | number): string | number {
   return input;
 }
 
-export { cn, capitalizeFirstLetter };
+const sortBy = (by: string) => {
+  return (
+    a: { [key: string]: string | number | boolean },
+    b: { [key: string]: string | number | boolean }
+  ) => (a[by] > b[by] ? 1 : b[by] > a[by] ? -1 : 0);
+};
+
+export { capitalizeFirstLetter, cn, sortBy };
