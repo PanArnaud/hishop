@@ -32,7 +32,7 @@ const CartItem = ({ data }: CartItemProps) => {
           <div className="flex justify-between">
             <p className="text-lg font-semibold text-black">{data.name}</p>
           </div>
-          <div className="grid grid-cols-2 gap-x-3 mb-1 flex justify-between text-sm">
+          <div className="grid grid-cols-2 gap-x-3 mb-1 justify-between text-sm">
             {Object.keys(data.options).map((option) => (
               <p className="text-gray-500">
                 {capitalizeFirstLetter(option)}:{" "}
