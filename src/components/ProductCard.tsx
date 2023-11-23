@@ -4,6 +4,9 @@ import { Category } from "../types/Category";
 import { useNavigate } from "react-router-dom";
 import IconButton from "./IconButton";
 import Currency from "./Currency";
+import { MouseEventHandler } from "react";
+import PreviewModal from "./PreviewModal";
+import usePreviewModal from "../hooks/usePreviewModal";
 
 interface ProductCardProps {
   data: Product;
@@ -12,6 +15,7 @@ interface ProductCardProps {
 
 const ProductCard = ({ data, categories }: ProductCardProps) => {
   const navigate = useNavigate();
+  const previewModal = usePreviewModal();
 
   const category = categories.filter((category) => {
     return category.id === data.category;
@@ -20,6 +24,11 @@ const ProductCard = ({ data, categories }: ProductCardProps) => {
   const handleClick = () => {
     navigate(`/product/${data?.id}`);
   };
+
+  const onPreview: MouseEventHandler<HTMLButtonElement> = (event) => {
+    event.stopPropagation();
+    previewModal.onOpen(data);
+  }
 
   return (
     <div
@@ -31,7 +40,7 @@ const ProductCard = ({ data, categories }: ProductCardProps) => {
           <div className="flex gap-x-6 justify-center">
             <IconButton
               icon={<Expand size={20} className="text-gray-600" />}
-              onClick={() => {}}
+              onClick={onPreview}
             />
             <IconButton
               icon={<ShoppingCart size={20} className="text-gray-600" />}
