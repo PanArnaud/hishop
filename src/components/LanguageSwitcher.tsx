@@ -28,7 +28,7 @@ const LanguageSwitcher = () => {
         leaveFrom="opacity-100 scale-100"
         leaveTo="opacity-0 scale-95"
       >
-        <Menu.Items className=" flex justify-between align-middle flex-col z-50 mt-10 rounded-3xl bg-white shadow-lg ring-black/5 focus:outline-none">
+        <Menu.Items className="flex justify-between align-middle flex-col z-50 mt-10 rounded-3xl bg-white shadow-lg ring-black/5 focus:outline-none">
           <div className="">
             {Object.keys(lngs).map((lng, index) => (
               <Menu.Item key={index}>
