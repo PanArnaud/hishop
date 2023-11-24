@@ -17,5 +17,8 @@
   "list.empty": "No results found",
   "options.switchType": "Switch type",
   "options.frameMaterial": "Frame material",
-  "options.backlight": "Backlight"
+  "options.backlight": "Backlight",
+  "options.sensor": "Sensor",
+  "options.buttons": "Buttons",
+  "options.dpi": "DPI"
 }

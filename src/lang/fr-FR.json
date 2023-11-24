@@ -17,5 +17,8 @@
   "list.empty": "Aucun resultat",
   "options.switchType": "Type de switch",
   "options.frameMaterial": "Materiau du cadre",
-  "options.backlight": "Rétroéclairage"
+  "options.backlight": "Rétroéclairage",
+  "options.sensor": "Capteur",
+  "options.buttons": "Boutons",
+  "options.dpi": "DPI"
 }
