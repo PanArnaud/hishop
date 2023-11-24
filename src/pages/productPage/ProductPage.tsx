@@ -9,20 +9,10 @@ import { Product } from "../../types/Product";
 const ProductPage = () => {
   const { productId } = useParams();
   const [product, setProduct] = useState<Product | null>(null);
-  // const [suggestedProducts, setSuggestedProducts] = useState<Product[]>([]);
 
   useEffect(() => {
     getSnapshot<Product | null>("products", productId, setProduct);
   }, [productId]);
-
-  // useEffect(() => {
-  //   if (product) {
-  //     getSnapshots<Product>("products", setSuggestedProducts, {
-  //       property: "category",
-  //       value: product.category,
-  //     });
-  //   }
-  // }, [product]);
 
   if (!productId || !product) {
     return null;
@@ -38,8 +28,6 @@ const ProductPage = () => {
               <Info data={product} />
             </div>
           </div>
-          {/* <hr className="my-10" /> */}
-          {/* <ProductList title="Related Items" items={suggestedProducts} /> */}
         </div>
       </Container>
     </div>

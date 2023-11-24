@@ -5,6 +5,7 @@ import { Product } from "../types/Product";
 import Button from "./Button";
 import Currency from "./Currency";
 import OptionPicker from "./OptionPicker";
+import { useTranslation } from "react-i18next";
 
 interface InfoProps {
   data: Product;
@@ -12,6 +13,7 @@ interface InfoProps {
 
 const Info = ({ data }: InfoProps) => {
   const cart = useCart();
+  const { t } = useTranslation();
   const defaultValue: { [key: string]: string | number | null } = {};
   Object.keys(data.options).map((option) => {
     defaultValue[option] = Object.create(data.options)[option][0];
@@ -50,7 +52,8 @@ const Info = ({ data }: InfoProps) => {
       />
       <div className="mt-10 flex items-center gap-x-3">
         <Button onClick={addToCart} className="flex items-center gap-x-2">
-          Add to cart <ShoppingCart />
+          {t("cart.add-to-cart")}
+          <ShoppingCart />
         </Button>
       </div>
     </div>

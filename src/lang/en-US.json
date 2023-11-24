@@ -1,0 +1,21 @@
+{
+  "cart.order-summary": "Order Summary",
+  "cart.order-total": "Order Total",
+  "cart.checkout": "Checkout",
+  "categories.keyboards": "Keyboards",
+  "categories.headphones": "Headphones",
+  "categories.mice": "Mices",
+  "categories.our_keyboards": "Our keyboards",
+  "categories.our_headphones": "our headphones",
+  "categories.our_mice": "Our mices",
+  "cart.add-to-cart": "Add to cart",
+  "cart.your-cart": "Your cart",
+  "cart.empty": "No items added to cart",
+  "product.featured-products": "Featured products",
+  "footer.copy": "2023 HiShop, Inc. All Rights Reserved. Made with ♥️",
+  "toast.order-validate": "Your order has been validated",
+  "list.empty": "No results found",
+  "options.switchType": "Switch type",
+  "options.frameMaterial": "Frame material",
+  "options.backlight": "Backlight"
+}

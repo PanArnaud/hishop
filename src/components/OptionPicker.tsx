@@ -1,4 +1,4 @@
-import { capitalizeFirstLetter } from "../lib/utils";
+import { useTranslation } from "react-i18next";
 import Button from "./Button";
 
 interface OptionPickerProps {
@@ -12,13 +12,13 @@ const OptionPicker = ({
   selection,
   selectionUpdateHandler,
 }: OptionPickerProps) => {
+  const { t } = useTranslation();
+
   return (
     <div className="flex flex-col gap-y-6">
       {Object.keys(data.options).map((option) => (
         <div key={option} className="flex items-center gap-x-4">
-          <h3 className="font-semibold text-black">
-            {capitalizeFirstLetter(option)}
-          </h3>
+          <h3 className="font-semibold text-black">{t(`options.${option}`)}</h3>
           {Object.create(data.options)[option].map((optionValue: string) => {
             return (
               <Button
@@ -28,7 +28,7 @@ const OptionPicker = ({
                   selection[option] === optionValue ? "bg-black text-white" : ""
                 }`}
               >
-                {capitalizeFirstLetter(optionValue)}
+                {optionValue}
               </Button>
             );
           })}

@@ -6,6 +6,7 @@ import { Category } from "../types/Category";
 import { Product } from "../types/Product";
 import Currency from "./Currency";
 import IconButton from "./IconButton";
+import { useTranslation } from "react-i18next";
 
 interface ProductCardProps {
   data: Product;
@@ -14,6 +15,7 @@ interface ProductCardProps {
 
 const ProductCard = ({ data, categories }: ProductCardProps) => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const previewModal = usePreviewModal();
 
   const category = categories.filter((category) => {
@@ -51,7 +53,9 @@ const ProductCard = ({ data, categories }: ProductCardProps) => {
       {/* Description */}
       <div>
         <p className="font-semibold text-lg">{data.name}</p>
-        <p className="text-sm text-gray-500">{category?.name}</p>
+        <p className="text-sm text-gray-500">
+          {t(`categories.${category?.name}`)}
+        </p>
       </div>
       {/* Price */}
       <div className="flex items-center justify-between">

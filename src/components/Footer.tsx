@@ -1,9 +1,13 @@
+import { useTranslation } from "react-i18next";
+
 const Footer = () => {
+  const { t } = useTranslation();
+
   return (
     <div className="bg-white border-t">
       <div className="mx-auto py-10">
         <p className="text-center text-xs text-black">
-          &copy; 2023 HiShop, Inc. All Rights Reserved. Made with ♥️
+          &copy; {t("footer.copy")}
         </p>
       </div>
     </div>

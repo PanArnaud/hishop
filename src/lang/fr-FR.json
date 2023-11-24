@@ -1,0 +1,21 @@
+{
+  "cart.order-summary": "Résumé de commande",
+  "cart.order-total": "Total",
+  "cart.checkout": "Payer",
+  "categories.keyboards": "Claviers",
+  "categories.headphones": "Casques",
+  "categories.mice": "Souris",
+  "categories.our-keyboards": "Nos claviers",
+  "categories.our-headphones": "Nos casques",
+  "categories.our-mice": "Nos souris",
+  "cart.add-to-cart": "Ajouter au panier",
+  "cart.your-cart": "Votre panier",
+  "cart.empty": "Aucun article dans le panier",
+  "product.featured-products": "Produits tendances",
+  "footer.copy": "2023 HiShop, Inc. Tous droits réservés. Construit avec ♥️",
+  "toast.order-validate": "Votre commande a été validée",
+  "list.empty": "Aucun resultat",
+  "options.switchType": "Type de switch",
+  "options.frameMaterial": "Materiau du cadre",
+  "options.backlight": "Rétroéclairage"
+}

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useParams } from "react-router-dom";
 import Billboard from "../../components/Billboard";
 import Container from "../../components/Container";
@@ -10,6 +11,7 @@ import { Product } from "../../types/Product";
 
 const CategoryPage = () => {
   const { categoryId } = useParams();
+  const { t } = useTranslation();
   const [category, setCategory] = useState<Category | null>(null);
   const [billboard, setBillboard] = useState<BillboardType | null>(null);
   const [products, setProducts] = useState<Product[]>([]);
@@ -45,7 +47,10 @@ const CategoryPage = () => {
         )}
         <div className="px-4 sm:px-6 lg:px-8 pb-24">
           <div className="lg:grid lg:grid-cols-5 lg:gap-x-8"></div>
-          <ProductList title={`Our ${category.name}`} items={products} />
+          <ProductList
+            title={t(`categories.our-${category.name}`)}
+            items={products}
+          />
         </div>
       </Container>
     </div>

@@ -4,10 +4,12 @@ import toast from "react-hot-toast";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import useCart from "../hooks/useCart";
 import Button from "./Button";
+import { useTranslation } from "react-i18next";
 
 const NavbarActions = () => {
   const cart = useCart();
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const [searchParams] = useSearchParams();
 
   const [isMounted, setIsMounted] = useState(false);
@@ -15,7 +17,7 @@ const NavbarActions = () => {
   useEffect(() => {
     if (searchParams.get("success") === "1" && cart.items.length > 0) {
       cart.removeAll();
-      toast.success("Your order has been validated");
+      toast.success(t("toast.order-validate"));
     }
   }, []);
 

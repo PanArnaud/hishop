@@ -1,6 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import { sortBy } from "../lib/utils";
 import { Category } from "../types/Category";
+import { useTranslation } from "react-i18next";
 
 interface MainNavProps {
   data: Category[];
@@ -8,13 +9,14 @@ interface MainNavProps {
 
 const MainNav = ({ data }: MainNavProps) => {
   const { pathname } = useLocation();
+  const { t } = useTranslation();
 
   const routes = data.map((category: Category) => ({
     href: `/category/${category.id}`,
     label: category.name,
     active: pathname === `/category/${category.id}`,
   }));
-
+  
   return (
     <nav className="mx-6 flex items-center space-x-4 lg:space-x-6">
       {routes
@@ -27,7 +29,7 @@ const MainNav = ({ data }: MainNavProps) => {
             className={`text-sm font-medium transition-colors hover:text-black",
             ${category.active ? "text-black" : "text-neutral-500"}`}
           >
-            {category.label}
+            {t(`categories.${category.label}`)}
           </Link>
         ))}
     </nav>
