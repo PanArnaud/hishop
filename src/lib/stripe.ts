@@ -11,7 +11,8 @@ const createStripeSession = (
   items: Product[],
   loadingStateSetter: React.Dispatch<React.SetStateAction<boolean>>
 ): void => {
-  const hostname = window.location.host;
+  const hostname = window.location.origin;
+
   loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY as string).then(
     (stripe) => {
       loadingStateSetter(true);
