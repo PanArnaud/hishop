@@ -5,6 +5,7 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import useCart from "../hooks/useCart";
 import Button from "./Button";
 import { useTranslation } from "react-i18next";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 const NavbarActions = () => {
   const cart = useCart();
@@ -31,6 +32,7 @@ const NavbarActions = () => {
 
   return (
     <div className="ml-auto flex items-center gap-x-4">
+      <LanguageSwitcher />
       <Button
         onClick={() => navigate("/cart")}
         className="flex items-center rounded-full bg-black px-4 py-2"
