@@ -2,11 +2,11 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Billboard from "../../components/Billboard";
 import Container from "../../components/Container";
+import ProductList from "../../components/ProductList";
 import { getDocument, getSnapshots } from "../../lib/queries";
 import { Billboard as BillboardType } from "../../types/Billboard";
 import { Category } from "../../types/Category";
 import { Product } from "../../types/Product";
-import ProductList from "../../components/ProductList";
 
 const CategoryPage = () => {
   const { categoryId } = useParams();
@@ -23,6 +23,7 @@ const CategoryPage = () => {
   }, [categoryId]);
 
   useEffect(() => {
+    setBillboard(null);
     getDocument<BillboardType | null>(
       "billboards",
       category?.billboard,
@@ -33,14 +34,17 @@ const CategoryPage = () => {
   if (!categoryId || !category) {
     return null;
   }
-  console.log(billboard)
+
   return (
     <div className="bg-white">
       <Container>
-        {billboard && billboard !== undefined && <Billboard data={billboard} />}
+        {billboard && billboard !== undefined ? (
+          <Billboard data={billboard} />
+        ) : (
+          <div className="py-2" />
+        )}
         <div className="px-4 sm:px-6 lg:px-8 pb-24">
-          <div className="lg:grid lg:grid-cols-5 lg:gap-x-8">
-          </div>
+          <div className="lg:grid lg:grid-cols-5 lg:gap-x-8"></div>
           <ProductList title={`Our ${category.name}`} items={products} />
         </div>
       </Container>

@@ -1,7 +1,6 @@
 import { Expand } from "lucide-react";
 import { MouseEventHandler } from "react";
 import { useNavigate } from "react-router-dom";
-import useCart from "../hooks/useCart";
 import usePreviewModal from "../hooks/usePreviewModal";
 import { Category } from "../types/Category";
 import { Product } from "../types/Product";

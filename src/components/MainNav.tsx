@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
-import { Category } from "../types/Category";
 import { sortBy } from "../lib/utils";
+import { Category } from "../types/Category";
 
 interface MainNavProps {
   data: Category[];

@@ -17,6 +17,6 @@ const ModalProvider = () => {
       <PreviewModal />
     </>
   );
-}
+};
 
 export default ModalProvider;

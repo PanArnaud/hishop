@@ -34,7 +34,7 @@ const CartItem = ({ data }: CartItemProps) => {
           </div>
           <div className="grid grid-cols-2 gap-x-3 mb-1 justify-between text-sm">
             {Object.keys(data.options).map((option) => (
-              <p className="text-gray-500">
+              <p key={option} className="text-gray-500">
                 {capitalizeFirstLetter(option)}:{" "}
                 {Object.create(data.options)[option]}
               </p>

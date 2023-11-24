@@ -8,7 +8,7 @@ const Billboard = ({ data }: BillboardProps) => {
   return (
     <div className="p-2 sm:p-4 lg:p-6 rounded-xl overflow-hidden">
       <div
-        className="rounded-xl relative aspect-square md:aspect-[2.4/1] overflow-hidden bg-cover"
+        className="rounded-xl relative aspect-square md:aspect-[4/1] overflow-hidden bg-cover"
         style={{ backgroundImage: `url(${data?.imageUrl})` }}
       >
         <div className="h-full w-full flex flex-col justify-center items-center text-center gap-x-8">

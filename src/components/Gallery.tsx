@@ -1,4 +1,3 @@
-import React from "react";
 import { Tab } from "@headlessui/react";
 import GalleryTab from "./GalleryTab";
 
@@ -20,7 +19,10 @@ const Gallery = ({ images }: GalleryProps) => {
         {images.map((image) => (
           <Tab.Panel key={image.url}>
             <div className="aspect-square relative h-full w-full sm:rounded-lg overflow-hidden">
-              <img src={image.url} className="object-cover aspect-square object-center" />
+              <img
+                src={image.url}
+                className="object-cover aspect-square object-center"
+              />
             </div>
           </Tab.Panel>
         ))}

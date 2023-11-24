@@ -1,4 +1,3 @@
-import React from "react";
 import { capitalizeFirstLetter } from "../lib/utils";
 import Button from "./Button";
 
