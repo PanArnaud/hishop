@@ -5,7 +5,7 @@ import Button from "./Button";
 import Currency from "./Currency";
 
 const Summary = () => {
-  const { items, removeAll } = useCart();
+  const { items } = useCart();
   const [checkoutDisabled, setCheckoutDisabled] = useState<boolean>(
     items.length === 0
   );

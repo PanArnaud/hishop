@@ -11,15 +11,11 @@ const createStripeSession = (
   items: Product[],
   loadingStateSetter: React.Dispatch<React.SetStateAction<boolean>>
 ): void => {
-  const hostname = window.location.origin;
-
   loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY as string).then(
     (stripe) => {
       loadingStateSetter(true);
       createStripeCheckout({
-        success_url: hostname,
-        cancel_url: `${hostname}/cart`,
-
+        cancel_url: "/cart",
         line_items: items.map((item) => ({
           quantity: 1,
           price_data: {
