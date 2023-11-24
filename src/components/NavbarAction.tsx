@@ -1,18 +1,27 @@
 import { ShoppingBag } from "lucide-react";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import useCart from "../hooks/useCart";
 import Button from "./Button";
 
 const NavbarActions = () => {
+  const cart = useCart();
+  const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+
   const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    if (searchParams.get("success") === "1" && cart.items.length > 0) {
+      cart.removeAll();
+      toast.success("Your order has been validated");
+    }
+  }, []);
 
   useEffect(() => {
     setIsMounted(true);
   }, []);
-
-  const navigate = useNavigate();
-  const cart = useCart();
 
   if (!isMounted) {
     return null;

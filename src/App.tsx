@@ -16,7 +16,7 @@ const App = () => {
       <ModalProvider />
       <ToastProvider />
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        <Route path="/:success=1?" element={<HomePage />} />
         <Route path="/product/:productId" element={<ProductPage />} />
         <Route path="/category/:categoryId" element={<CategoryPage />} />
         <Route path="/cart" element={<CartPage />} />
