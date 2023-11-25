@@ -4,7 +4,7 @@ import Info from "./Info";
 import Modal from "./Modal";
 
 const PreviewModal = () => {
-  const { isOpen, onClose, onOpen, data } = usePreviewModal();
+  const { isOpen, onClose } = usePreviewModal();
   const product = usePreviewModal((state) => state.data);
 
   if (!product) {
