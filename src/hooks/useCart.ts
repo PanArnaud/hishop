@@ -2,6 +2,7 @@ import toast from "react-hot-toast";
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
 import { Product } from "../types/Product";
+import i18n from "../i18n";
 
 interface CartStore {
   items: Product[];
@@ -19,15 +20,15 @@ const useCart = create(
         const existingItem = currentItems.find((item) => item.id === data.id);
 
         if (existingItem) {
-          return toast("Item already in cart");
+          return toast(i18n.t("toast.item-already-on-cart"));
         }
 
         set({ items: [...get().items, data] });
-        toast.success("Item added");
+        toast.success(i18n.t("toast.item-added"));
       },
       removeItem: (id: string) => {
         set({ items: [...get().items.filter((item) => item.id !== id)] });
-        toast.success("Item remove from the cart");
+        toast.success(i18n.t("toast.item-removed"));
       },
       removeAll: () => set({ items: [] }),
     }),
