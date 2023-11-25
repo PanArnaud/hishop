@@ -18,7 +18,7 @@ const Gallery = ({ images }: GalleryProps) => {
       <Tab.Panels className="aspect-square w-full">
         {images.map((image) => (
           <Tab.Panel key={image.url}>
-            <div className="aspect-square relative h-full w-full sm:rounded-lg overflow-hidden">
+            <div className="aspect-square relative h-full w-full rounded-lg sm:rounded-lg overflow-hidden">
               <img
                 src={image.url}
                 className="object-cover aspect-square object-center"
