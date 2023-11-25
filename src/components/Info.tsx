@@ -1,11 +1,11 @@
 import { ShoppingCart } from "lucide-react";
 import { MouseEventHandler, useState } from "react";
+import { useTranslation } from "react-i18next";
 import useCart from "../hooks/useCart";
-import { Product } from "../types/Product";
+import { OptionSelection, Product } from "../types/Product";
 import Button from "./Button";
 import Currency from "./Currency";
 import OptionPicker from "./OptionPicker";
-import { useTranslation } from "react-i18next";
 
 interface InfoProps {
   data: Product;
@@ -14,15 +14,16 @@ interface InfoProps {
 const Info = ({ data }: InfoProps) => {
   const cart = useCart();
   const { t } = useTranslation();
-  const defaultValue: { [key: string]: string | number | null } = {};
-  Object.keys(data.options).map((option) => {
+  const defaultValue: OptionSelection = {};
+  Object.keys(data.options).map((option: string) => {
     defaultValue[option] = Object.create(data.options)[option][0];
   });
-  const [selection, setSelection] = useState<{
-    [key: string]: string | number | null;
-  }>(defaultValue);
+  const [selection, setSelection] = useState<OptionSelection>(defaultValue);
 
-  const changeSelection = (option: string, value: string | number) => {
+  const changeSelection = (
+    option: string,
+    value: string | number | boolean
+  ) => {
     setSelection((selection) => ({
       ...selection,
       ...{
@@ -33,7 +34,7 @@ const Info = ({ data }: InfoProps) => {
 
   const addToCart: MouseEventHandler<HTMLButtonElement> = (event) => {
     event.stopPropagation();
-    cart.addItem({ ...data, ...{ options: selection } });
+    cart.addItem({ ...data, ...{ selectedOptions: selection } });
   };
 
   return (

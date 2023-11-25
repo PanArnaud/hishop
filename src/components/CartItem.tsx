@@ -1,10 +1,9 @@
 import { X } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import useCart from "../hooks/useCart";
-import { capitalizeFirstLetter } from "../lib/utils";
 import { Product } from "../types/Product";
 import Currency from "./Currency";
 import IconButton from "./IconButton";
-import { useTranslation } from "react-i18next";
 
 interface CartItemProps {
   data: Product;
@@ -34,16 +33,18 @@ const CartItem = ({ data }: CartItemProps) => {
           <div className="flex justify-between">
             <p className="text-lg font-semibold text-black">{data.name}</p>
           </div>
-          <div className="grid grid-cols-2 gap-3 mb-1 justify-between text-sm">
-            {Object.keys(data.options).map((option) => (
-              <div key={option}>
-                <span>{t(`options.${option}`)}</span>
-                <div key={option} className="text-gray-500">
-                  {Object.create(data.options)[option]}
+          {data.selectedOptions !== undefined && (
+            <div className="grid grid-cols-2 gap-3 mb-1 justify-between text-sm">
+              {Object.keys(data?.selectedOptions).map((option: string) => (
+                <div key={option}>
+                  <span>{t(`options.${option}`)}</span>
+                  <div key={option} className="text-gray-500">
+                    {data.selectedOptions[option]}
+                  </div>
                 </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
           <Currency value={data.price} />
         </div>
       </div>

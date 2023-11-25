@@ -1,4 +1,4 @@
-export interface Product {
+export type Product = {
   id: string;
   category: string;
   name: string;
@@ -6,18 +6,15 @@ export interface Product {
   isFeatured: boolean;
   images: { url: string }[];
   options: {
-    switchType?: string[];
-    backlight?: string[];
-    frameMaterial?: string[];
-    dpi?: number[];
-    buttons?: number[];
-    sensor?: string[];
-    light?: string[];
-    shape?: string[];
-    connectivity?: string[];
-    noiseReduction?: string[];
-    pad?: string[];
-    microphone?: string[];
-    material?: string[];
+    [key: string]: ProductOption[];
   };
-}
+  selectedOptions: OptionSelection;
+};
+
+export type ProductOption = {
+  [key: string]: string[] | number[] | boolean;
+};
+
+export type OptionSelection = {
+  [key: string]: string | number | boolean;
+};
