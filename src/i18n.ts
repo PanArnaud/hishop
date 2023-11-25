@@ -20,3 +20,8 @@ i18n
   });
 
 export default i18n;
+
+export const languages = {
+  "fr-FR": { nativeName: "Français", flagCode: "FR" },
+  "en-US": { nativeName: "English", flagCode: "US" },
+};
